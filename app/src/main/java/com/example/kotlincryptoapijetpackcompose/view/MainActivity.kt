@@ -6,9 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -97,6 +100,7 @@ fun CryptoScreen() {
                     .fillMaxWidth()
                     .padding(it)
             ) {
+                CryptoList(cryptoModels = cryptoModels)
             }
         }
         )
@@ -123,6 +127,16 @@ fun TopBar() {
 }
 
 
+@Composable
+fun CryptoList(cryptoModels: List<CryptoModel>) {
+    LazyColumn(contentPadding = PaddingValues(15.dp)) {
+        items(cryptoModels) { 
+            cryptoModel ->
+            CryptoRow(cryptoModel = cryptoModel)
+        }
+    }
+}
+
 
 @Composable
 fun CryptoRow(cryptoModel: CryptoModel) {
@@ -130,11 +144,18 @@ fun CryptoRow(cryptoModel: CryptoModel) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Magenta)
+            .background(MaterialTheme.colorScheme.error)
             .padding(10.dp)
     ) {
-        Text(text = cryptoModel.currency, fontSize = 25.sp, fontStyle = FontStyle.Italic)
-        Text(text = cryptoModel.price, fontSize = 20.sp, fontStyle = FontStyle.Italic)
+        Text(text = cryptoModel.currency,
+            fontSize = 25.sp,
+            fontStyle = FontStyle.Italic,
+            color = Color.White)
+
+        Text(text = cryptoModel.price,
+            fontSize = 20.sp,
+            fontStyle = FontStyle.Italic,
+            color = Color.White)
     }
 
 }
@@ -143,7 +164,7 @@ fun CryptoRow(cryptoModel: CryptoModel) {
 @Composable
 fun GreetingPreview() {
     KotlinCryptoApiJetpackComposeTheme {
-        CryptoScreen()
+        CryptoRow(cryptoModel = CryptoModel("Test", "1000"))
     }
 }
 
