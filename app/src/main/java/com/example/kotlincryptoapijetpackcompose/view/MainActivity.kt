@@ -1,4 +1,4 @@
-package com.example.kotlincryptoapijetpackcompose
+package com.example.kotlincryptoapijetpackcompose.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

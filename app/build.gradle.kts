@@ -3,6 +3,25 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+object Libs {
+    private const val RETROFIT_VERSION = "2.9.0"
+    private const val RXJAVA_VERSION = "2.1.1"
+    private const val COROUTINES_VERSION = "1.6.4"
+
+    // Retrofit
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    const val CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    const val ADAPTER_RXJAVA = "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+
+    // RxJava
+    const val RXJAVA = "io.reactivex.rxjava2:rxjava:$RXJAVA_VERSION"
+    const val RXANDROID = "io.reactivex.rxjava2:rxandroid:$RXJAVA_VERSION"
+
+    // Coroutines
+    const val COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION"
+    const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$COROUTINES_VERSION"
+}
+
 android {
     namespace = "com.example.kotlincryptoapijetpackcompose"
     compileSdk = 34
@@ -66,4 +85,17 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Retrofit
+    implementation(Libs.RETROFIT)
+    implementation(Libs.CONVERTER_GSON)
+    implementation(Libs.ADAPTER_RXJAVA)
+
+    // RxJava
+    implementation(Libs.RXJAVA)
+    implementation(Libs.RXANDROID)
+
+    // Coroutines
+    implementation(Libs.COROUTINES_CORE)
+    implementation(Libs.COROUTINES_ANDROID)
 }
