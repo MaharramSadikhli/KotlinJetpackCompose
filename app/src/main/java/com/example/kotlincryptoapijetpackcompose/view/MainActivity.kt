@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -119,6 +120,23 @@ fun TopBar() {
             titleContentColor = Color.White,
         )
     )
+}
+
+
+
+@Composable
+fun CryptoRow(cryptoModel: CryptoModel) {
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Magenta)
+            .padding(10.dp)
+    ) {
+        Text(text = cryptoModel.currency, fontSize = 25.sp, fontStyle = FontStyle.Italic)
+        Text(text = cryptoModel.price, fontSize = 20.sp, fontStyle = FontStyle.Italic)
+    }
+
 }
 
 @Preview(showBackground = true)
